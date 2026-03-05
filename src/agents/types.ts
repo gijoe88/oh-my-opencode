@@ -24,7 +24,7 @@ export type AgentCategory = "exploration" | "specialist" | "advisor" | "utility"
 /**
  * Cost classification for Tool Selection table
  */
-export type AgentCost = "FREE" | "CHEAP" | "EXPENSIVE"
+// Type removed - no longer needed
 
 /**
  * Delegation trigger for Sisyphus prompt's Delegation Table

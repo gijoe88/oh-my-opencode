@@ -88,17 +88,14 @@ export function buildToolSelectionTable(
 
   if (tools.length > 0) {
     const toolsDisplay = formatToolsForPrompt(tools)
-    rows.push(`- ${toolsDisplay} — **FREE** — Not Complex, Scope Clear, No Implicit Assumptions`)
+    rows.push(`- ${toolsDisplay} — Not Complex, Scope Clear, No Implicit Assumptions`)
   }
 
-  const costOrder = { FREE: 0, CHEAP: 1, EXPENSIVE: 2 }
-  const sortedAgents = [...agents]
-    .filter((a) => a.metadata.category !== "utility")
-    .sort((a, b) => costOrder[a.metadata.cost] - costOrder[b.metadata.cost])
+  const sortedAgents = [...agents].filter((a) => a.metadata.category !== "utility")
 
   for (const agent of sortedAgents) {
     const shortDesc = agent.description.split(".")[0] || agent.description
-    rows.push(`- \`${agent.name}\` agent — **${agent.metadata.cost}** — ${shortDesc}`)
+    rows.push(`- \`${agent.name}\` agent — ${shortDesc}`)
   }
 
   rows.push("")
@@ -260,7 +257,7 @@ export function buildOracleSection(agents: AvailableAgent[]): string {
   return `<Oracle_Usage>
 ## Oracle — Read-Only High-IQ Consultant
 
-Oracle is a read-only, expensive, high-quality reasoning model for debugging and architecture. Consultation only.
+Oracle is a read-only, high-quality reasoning model for debugging and architecture. Consultation only.
 
 ### WHEN to Consult (Oracle FIRST, then implement):
 
